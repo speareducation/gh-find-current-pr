@@ -1,18 +1,19 @@
 const core = require('@actions/core');
-const { GitHub, context } = require('@actions/github');
+const github = require('@actions/github');
 
 async function main() {
     const token = core.getInput('github-token', { required: true });
     const sha = core.getInput('sha', { required: true});
 
-    const client = new GitHub(token, {});
-    const result = await client.repos.listPullRequestsAssociatedWithCommit({
+    const octokit = github.getOctokit(token)
+    const context = github.context;
+
+    const { data: result } = await octokit.pulls.list({
         owner: context.repo.owner,
         repo: context.repo.repo,
-        commit_sha: sha,
     });
 
-    const pr = result.data.length > 0 && result.data.filter(el => el.state === 'open')[0];
+    const pr = result.length > 0 && result.filter(el => el.state === 'open' && el.head.sha === sha)[0];
 
     core.setOutput('pr', pr && pr.number || '');
     core.setOutput('number', pr && pr.number || '');

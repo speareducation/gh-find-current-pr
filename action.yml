@@ -1,6 +1,6 @@
-name: Find Current Pull Request
-author: jwalton
-description: Find a PR associated with the current commit.
+name: Find Current Pull Request 
+author: Spear Educaiton 
+description: Find a PR associated with the current commit. Only if the current commit is the HEAD commit of an open PR.
 inputs:
   github-token:
     description: The GitHub token used to create an authenticated client.  Defaults to github provided token.
@@ -10,9 +10,9 @@ inputs:
     default: ${{ github.sha }}
 outputs:
   pr:
-    description: The PR if one was found. (e.g. '345' for #345) [Deprecated: Please use number instead]
+    description: The PR if one was found. (e.g. '373')
   number:
-    description: The PR's number if the PR was found (e.g. '345' for #345)
+    description: The PR's number if the PR was found (e.g. '373')
   title:
     description: The PR's title if the PR was found
   body:

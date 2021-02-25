@@ -2,6 +2,10 @@
 
 This action tries to figure out the current PR.
 
+Adaptation from: https://github.com/jwalton/gh-find-current-pr
+
+The big change is this will only successfully trigger if the current commit's sha the HEAD commit in an open PR.
+
 If the event is a `pull_request`, it's very easy to get the current PR number
 from the context via `${{ github.event.number }}`, but unfortunately this
 information does not seem to be readily available for a `push` event.  This
@@ -17,7 +21,7 @@ Additionally, `title` and `body` outputs are available as well to get the respec
     steps:
       - uses: actions/checkout@v1
       # Find the PR associated with this push, if there is one.
-      - uses: jwalton/gh-find-current-pr@v1
+      - uses: speareducation/gh-find-current-pr@v1
         id: findPr
       # This will echo "Your PR is 7", or be skipped if there is no current PR.
       - run: echo "Your PR is ${PR}"
