@@ -4,7 +4,7 @@ This action tries to figure out the current PR.
 
 Adaptation from: https://github.com/jwalton/gh-find-current-pr
 
-The big change is this will only successfully trigger if the current commit's sha the HEAD commit in an open PR.
+The difference is this implementation uses the search api instead of "listPullRequestsAssociatedWithCommit".
 
 If the event is a `pull_request`, it's very easy to get the current PR number
 from the context via `${{ github.event.number }}`, but unfortunately this

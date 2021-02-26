@@ -8,12 +8,12 @@ async function main() {
     const octokit = github.getOctokit(token)
     const context = github.context;
 
-    const { data: result } = await octokit.pulls.list({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
+    const { data: result } = await octokit.search.issuesAndPullRequests({
+        q: 'q=' + sha + "&state:open"
     });
 
-    const pr = result.length > 0 && result.filter(el => el.state === 'open' && el.head.sha === sha)[0];
+    const items = result.items
+    const pr = items.length > 0 && items.filter(el => el.state === 'open')[0];
 
     core.setOutput('pr', pr && pr.number || '');
     core.setOutput('number', pr && pr.number || '');
