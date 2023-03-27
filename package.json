@@ -1,6 +1,6 @@
 {
   "name": "gh-find-current-pr",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "description": "GitHub Action for finding the Pull Request (PR) associated with the current SHA.",
   "main": "main.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jwalton/gh-find-current-pr#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
   }
 }

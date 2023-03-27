@@ -1,5 +1,5 @@
-name: Find Current Pull Request 
-author: Spear Educaiton 
+name: Find Current Pull Request
+author: Spear Educaiton
 description: Find a PR associated with the current commit. Only if the current commit is the HEAD commit of an open PR.
 inputs:
   github-token:
@@ -18,7 +18,7 @@ outputs:
   body:
     description: The PR's body if the PR was found
 runs:
-  using: node12
+  using: node16
   main: 'main.js'
 branding:
   icon: git-pull-request
