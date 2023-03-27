@@ -8,7 +8,7 @@ async function main() {
     const octokit = github.getOctokit(token)
     const context = github.context;
 
-    const { data: result } = await octokit.search.issuesAndPullRequests({
+    const { data: result } = await octokit.rest.search.issuesAndPullRequests({
         q: 'q=' + sha + "&state:open"
     });
 
